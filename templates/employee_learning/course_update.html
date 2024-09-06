@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-{% block title %}<h1>UPDATE Page</h1>{% endblock %}
+{% block title %}Course update{% endblock %}
 {% block content %}
+<h1>UPDATE Page</h1>
 <form  method="post"> 
     {{form.as_p}}
     {% csrf_token %}
-    <input type="submit" value="Save">
+    <input class="btn btn-primary" type="submit" value="Save">
 </form>
 {% endblock %}
