@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Главная{% endblock %}</title>
+</head>
+<nav>
+    <ul>
+        <a href="{% url "course_list" %}">List</a>
+        <a href="{% url "course_create" %}">Create</a>
+        {% comment %} <a href="#">UPDATE</a>
+        <a href="#">DELETE</a> {% endcomment %}
+    </ul>
+</nav>
+
+<body>
+{% block content %}
+{% endblock %}
+</body>
+<h6>Employee Learning 2024</h6>
+</html>

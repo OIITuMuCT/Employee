@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}<h1>Course list</h1>{% endblock %}
+{% block content %}
+<h1>LIST Page</h1>
+{% for course in course_object_list %}   
+    <p>{{ course.title|upper }}</p>
+    <p> {{ course.get_level_display }} </p>
+    <a href="{% url "course_detail" course.pk%}">Go DETAIL</a>
+    <hr>
+{% endfor %}
+{% endblock %}
+

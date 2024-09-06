@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Course detail{% endblock %}
+
+{% block content %}
+<h1>DETAIL Page</h1>
+<p>Course Title : {{ course_object.title|upper }} </p>
+<p>Level : {{ course_object.get_level_display }}</p>
+
+<p>Assigned Employees : </p>
+
+{% for emp in object.employee.all %}
+{{ emp.name }} : {{ emp.division }}
+{% endfor %}
+<ul>
+    <a href="{% url "course_update" object.pk%}">Update</a>
+    <a href="{% url "course_delete" object.pk%}">Delete</a>
+</ul>
+
+{% endblock %}
