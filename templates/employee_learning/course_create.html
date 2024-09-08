@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Course create{% endblock %}
+{% block content %}
+<div class="container w-50" style="min-width: 300px; max-width: 500px;">
+    <h1 class="m-5 text-center"><img src="{% static
+        'polls.png' %}" width="50px"> CREATE </h1>
+{% comment %} <h1 class="m-5 text-center"><img src="{% static "polls.png" %} %}" alt="image"> CREATE Page </h1> {% endcomment %}
+<form method="post">{% csrf_token %}
+    {{form|crispy}}
+    
+    <input class="btn btn-primary d-block mx-auto" type="submit" value="Save">
+</form>
+{% endblock %}
+</div>
