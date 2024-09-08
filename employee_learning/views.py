@@ -3,7 +3,8 @@ import datetime
 from typing import Any
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView,  DeleteView, DetailView, UpdateView, TemplateView
+from django.views.generic import ListView, CreateView,  \
+    DeleteView, DetailView, UpdateView, TemplateView
 
 from .models import LearningCourse
 
