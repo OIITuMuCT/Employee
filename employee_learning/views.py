@@ -1,5 +1,6 @@
 import datetime
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from typing import Any
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -19,7 +20,7 @@ class Index(TemplateView):
 
 
 # Create CRUD Web app.
-class CourseList(ListView):
+class CourseList(LoginRequiredMixin, ListView):
     # model = LearningCourse
     queryset = LearningCourse.objects.order_by('title')
     # queryset = LearningCourse.objects.filter(level='B')
@@ -32,26 +33,26 @@ class CourseList(ListView):
         context['today'] = datetime.date.today()
         return context
 
-class CourseDetail(DetailView):
+class CourseDetail(LoginRequiredMixin, DetailView):
     model = LearningCourse
     template_name = 'employee_learning/course_detail.html'
     context_object_name = 'course_object'
 
 
-class CourseCreate(CreateView):
+class CourseCreate(LoginRequiredMixin ,CreateView):
     model = LearningCourse
     template_name = 'employee_learning/course_create.html'
     fields = ('title', 'level', 'employee')
     success_url = reverse_lazy('course_list')
 
 
-class CourseUpdate(UpdateView):
+class CourseUpdate(LoginRequiredMixin, UpdateView):
     model = LearningCourse
     template_name = 'employee_learning/course_update.html'
     fields = ('title', 'level', 'employee')
     success_url = reverse_lazy('course_list')
     
-class CourseDelete(DeleteView):
+class CourseDelete(LoginRequiredMixin, DeleteView):
     model = LearningCourse
     template_name = 'employee_learning/course_delete.html'
     success_url = reverse_lazy('course_list')

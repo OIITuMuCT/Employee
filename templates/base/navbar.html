@@ -1,3 +1,4 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg bg-body- tertiary"> 
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -14,18 +15,25 @@
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+
+              {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup' %}">Signup</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                <a class="nav-link" style="color: aqua;" href="{% url 'account_logout' %}">Logout</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'account_change_password' %}">Change Password</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" src="{% static 'images/avatar.svg'%}" width="30px" href="{% url 'account_login' %}">UserLogo</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color: red;" href="{% url 'account_login' %}">Sing In</a>
+              </li>
+              {% endif %}    
             </li>
           </ul>
         </div>
